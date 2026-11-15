@@ -1,4 +1,3 @@
-
 name: Java CI
 
 on:
@@ -22,6 +21,9 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
+
+      - name: Make Maven Wrapper executable
+        run: chmod +x mvnw
 
       - name: Build and run tests
         run: ./mvnw -B clean test
