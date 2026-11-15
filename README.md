@@ -1,6 +1,15 @@
 # Algebra Equation Solver API
 
-A RESTful backend application built using **Java 21 and Spring Boot** to store, retrieve, and evaluate algebraic equations using **Postfix (Reverse Polish Notation) and Expression Trees**.
+A RESTful backend application built using **Java 21 and Spring Boot 4.0.0** to store, retrieve, and evaluate algebraic equations using **Postfix (Reverse Polish Notation) and Expression Trees**.
+
+## Live Deployment
+
+- **Live API:** https://algebra-equation-solver.onrender.com/
+- **Swagger UI:** https://algebra-equation-solver.onrender.com/swagger-ui/index.html
+- **OpenAPI Specification:** https://algebra-equation-solver.onrender.com/v3/api-docs
+- **GitHub Repository:** https://github.com/rakshithav2004/algebra-equation-solver
+
+The application is deployed on **Render** using Docker.
 
 ## Features
 
@@ -29,6 +38,9 @@ A RESTful backend application built using **Java 21 and Spring Boot** to store, 
 | JUnit 5 | Unit testing |
 | MockMvc | Controller testing |
 | Spotless | Code formatting |
+| Docker | Containerization |
+| Render | Cloud deployment |
+| GitHub Actions | Continuous Integration |
 
 ## Project Architecture
 
@@ -104,7 +116,7 @@ Expression tree:
     3  x 2  y
 ```
 
-For the variable values:
+Variable values:
 
 ```json
 {
@@ -128,7 +140,15 @@ Result:
 
 ## REST API Endpoints
 
-Base URL:
+### Base URL
+
+**Production:**
+
+```text
+https://algebra-equation-solver.onrender.com
+```
+
+**Local:**
 
 ```text
 http://localhost:8080
@@ -255,13 +275,13 @@ cd algebra-equation-solver
 
 ### Run the Application
 
-On Windows PowerShell:
+**Windows PowerShell:**
 
 ```powershell
 .\mvnw.cmd spring-boot:run
 ```
 
-On Linux/macOS:
+**Linux/macOS:**
 
 ```bash
 ./mvnw spring-boot:run
@@ -280,6 +300,10 @@ Once the application is running, open:
 ```text
 http://localhost:8080/swagger-ui/index.html
 ```
+
+For the deployed application:
+
+https://algebra-equation-solver.onrender.com/swagger-ui/index.html
 
 Swagger UI allows you to explore and test all available API endpoints interactively.
 
@@ -314,7 +338,7 @@ The test suite covers:
 - DTO validation.
 - Exception handling and error responses.
 
-The project currently has **31 passing test cases**.
+**Test results: 31 passing test cases.**
 
 ## Code Formatting
 
@@ -330,11 +354,29 @@ Verify formatting:
 .\mvnw.cmd spotless:check
 ```
 
+## Continuous Integration
+
+GitHub Actions is configured to automatically build and test the application when changes are pushed to the `main` branch or when a pull request is created.
+
+The workflow performs:
+
+- Java 21 setup.
+- Maven clean test.
+- Spotless formatting verification.
+
+## Docker Deployment
+
+The project includes a `Dockerfile` for containerizing the Spring Boot application.
+
+The Docker image uses Java 21 and Maven to build the application, then runs it using a Java 21 runtime image.
+
+The application is deployed on Render using this Docker configuration.
+
 ## Storage
 
 This application uses an in-memory `ConcurrentHashMap` repository.
 
-No external database is required. Stored equations are available while the application is running and are cleared when the application restarts.
+No external database is required. Stored equations are available while the application is running and are cleared when the application restarts or the service is redeployed.
 
 ## Repository
 
